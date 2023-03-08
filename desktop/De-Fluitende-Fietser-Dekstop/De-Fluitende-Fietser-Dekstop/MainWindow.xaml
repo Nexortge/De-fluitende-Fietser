@@ -1,0 +1,75 @@
+﻿<Window x:Class="De_Fluitende_Fietser_Dekstop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:De_Fluitende_Fietser_Dekstop"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="65*"/>
+            <RowDefinition Height="15*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="#FF83B1FF">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+            <ComboBox Grid.Column="1" Grid.Row="0"   SelectedIndex="0" Margin="0,5,0,0">
+                <ComboBoxItem>
+                    <TextBlock Text="Fiets" FontSize="20"/>
+                </ComboBoxItem>
+            </ComboBox>
+            <ComboBox Grid.Column="3" Grid.Row="0"  SelectedIndex="0" Margin="0,5,0,0">
+                <ComboBoxItem>
+                    <TextBlock Text="Verzekering" FontSize="20"/>
+                </ComboBoxItem>
+            </ComboBox>
+            <ComboBox Grid.Column="5" Grid.Row="0"  SelectedIndex="0" Margin="0,5,0,0">
+                <ComboBoxItem>
+                    <TextBlock Text="Service" FontSize="20"/>
+                </ComboBoxItem>
+            </ComboBox>
+            <xctk:WatermarkTextBox Grid.Column="7" Margin="0,5,0,0" FontSize="20" Watermark="Dagen" />
+
+
+            <Button Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="7"  Background="LightGreen" FontSize="20" Content="Toevoegen aan bestelling" Margin="0,5,0,0"/>
+
+        </Grid>
+        
+        <Grid Background="#FF83B1FF" Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="30*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <ProgressBar Grid.Column="1" Grid.Row="1"/>
+            <Button Grid.Column="3" Grid.Row="1" Background="LightGreen" FontSize="16" Content="Afrekenen"/>
+            <Button Grid.Column="5" Grid.Row="1" Background="LightGreen" FontSize="16" Content="Volgende klant"/>
+        </Grid>
+    </Grid>
+</Window>
