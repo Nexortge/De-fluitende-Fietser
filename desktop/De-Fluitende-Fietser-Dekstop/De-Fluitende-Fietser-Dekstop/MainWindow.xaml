@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:De_Fluitende_Fietser_Dekstop"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title='Fietsverhuur "De Fluitende Fietser" – Facturering' Height="700" Width="800" MinHeight="700" MinWidth="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="20*"/>
@@ -30,28 +30,102 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="10*"/>
             </Grid.RowDefinitions>
-            <ComboBox Grid.Column="1" Grid.Row="0"   SelectedIndex="0" Margin="0,5,0,0">
+            <ComboBox Grid.Column="1" Grid.Row="0"   SelectedIndex="0" Margin="0,5,0,0" Name="cmbFietsen">
                 <ComboBoxItem>
                     <TextBlock Text="Fiets" FontSize="20"/>
                 </ComboBoxItem>
+                <ComboBoxItem>
+                    <TextBlock Text="Aanhangfiets € 20,00 / dag" FontSize="15"/>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    <TextBlock Text="Driewielfiets € 30,00 / dag" FontSize="15"/>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    <TextBlock Text="Bakfiets € 35,00 / dag" FontSize="15"/>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    <TextBlock Text="Elektrische fiets € 30,00 / dag" FontSize="15"/>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    <TextBlock Text="Kinderfiets € 15,00 / dag" FontSize="15"/>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    <TextBlock Text="Ligfiets € 45,00 / dag" FontSize="15"/>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    <TextBlock Text="Oma fiets € 12,50 / dag" FontSize="15"/>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    <TextBlock Text="Racefiets € 15,00 / dag" FontSize="15"/>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    <TextBlock Text="Vouwfiets € 10,00 / dag" FontSize="15"/>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    <TextBlock Text="Speed pedelec € 15,00 / dag" FontSize="15"/>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    <TextBlock Text="Stadsfiets € 12,50 / dag" FontSize="15"/>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    <TextBlock Text="Zitfiets € 15,00 / dag" FontSize="15"/>
+                </ComboBoxItem>
+                
+                
+                
             </ComboBox>
-            <ComboBox Grid.Column="3" Grid.Row="0"  SelectedIndex="0" Margin="0,5,0,0">
+            <ComboBox Grid.Column="3" Grid.Row="0"  SelectedIndex="0" Margin="0,5,0,0" Name="cmbVerzekering">
                 <ComboBoxItem>
                     <TextBlock Text="Verzekering" FontSize="20"/>
                 </ComboBoxItem>
+                <ComboBoxItem>
+                    <TextBlock Text="Beschadigingen € 5,00 / dag" FontSize="15"/>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    <TextBlock Text="Diefstal € 10,00/ dag, eigen risico" FontSize="15"/>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    <TextBlock Text="Rechtsbijstand € 5,00 / dag" FontSize="15"/>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    <TextBlock Text="Ongevallen € 2,50 / dag" FontSize="15"/>
+                </ComboBoxItem>
             </ComboBox>
-            <ComboBox Grid.Column="5" Grid.Row="0"  SelectedIndex="0" Margin="0,5,0,0">
+            <ComboBox Grid.Column="5" Grid.Row="0"  SelectedIndex="0" Margin="0,5,0,0" Name="cmbService">
                 <ComboBoxItem>
                     <TextBlock Text="Service" FontSize="20"/>
                 </ComboBoxItem>
+                <ComboBoxItem>
+                    <TextBlock Text="Ophaalservice € 15,00 / dag" FontSize="15"/>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    <TextBlock Text="Diefstal € 10,00/ dag, eigen risico" FontSize="15"/>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    <TextBlock Text="Lunchpakket basis € 12,50 / dag" FontSize="15"/>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    <TextBlock Text="Lunchpakket uitgebreid € 20,00 / dag" FontSize="15"/>
+                </ComboBoxItem>
+                
+
+
+
+
             </ComboBox>
-            <xctk:WatermarkTextBox Grid.Column="7" Margin="0,5,0,0" FontSize="20" Watermark="Dagen" />
+            <xctk:WatermarkTextBox Grid.Column="7" Margin="0,5,0,0" FontSize="20" Watermark="Dagen" Name="txtDagen"/>
 
 
-            <Button Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="7"  Background="LightGreen" FontSize="20" Content="Toevoegen aan bestelling" Margin="0,5,0,0"/>
+            <Button Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="7" Name="btToevoegen" Background="LightGreen" FontSize="20" Content="Toevoegen aan bestelling" Margin="0,5,0,0"/>
 
         </Grid>
-        
+        <Grid Grid.Row="1">
+            <Image Source="/Img/fietser-nb.png" Opacity="0.5" Panel.ZIndex="-1"/>
+            <ListBox Background="{x:Null}">
+            </ListBox>
+
+        </Grid>
+
         <Grid Background="#FF83B1FF" Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
@@ -67,6 +141,7 @@
                 <RowDefinition Height="5*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
+            <TextBlock Text="Sluit af over: " Grid.Column="1"/>
             <ProgressBar Grid.Column="1" Grid.Row="1"/>
             <Button Grid.Column="3" Grid.Row="1" Background="LightGreen" FontSize="16" Content="Afrekenen"/>
             <Button Grid.Column="5" Grid.Row="1" Background="LightGreen" FontSize="16" Content="Volgende klant"/>
