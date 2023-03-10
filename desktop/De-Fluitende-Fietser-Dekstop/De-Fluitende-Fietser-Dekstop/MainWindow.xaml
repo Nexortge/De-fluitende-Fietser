@@ -58,8 +58,8 @@
             <Button Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="7" Name="btToevoegen" Background="LightGreen" FontSize="20" Content="Toevoegen aan bestelling" Margin="0,5,0,0" Click="btToevoegen_Click"/>
 
         </Grid>
-        <Grid Grid.Row="1">
-            <Image Source="/Img/fietser-nb.png" Opacity="0.5" Panel.ZIndex="-1"/>
+        <Grid Grid.Row="1" Name="gdBestelling">
+            <Image Source="/Img/fietser-nb.png" Opacity="0.2" Panel.ZIndex="-1"/>
             <StackPanel Orientation="Vertical" Name="spBestellingen">
                 
             </StackPanel>
@@ -81,10 +81,10 @@
                 <RowDefinition Height="5*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            <TextBlock Text="Sluit af over: " Grid.Column="1"/>
-            <ProgressBar Grid.Column="1" Grid.Row="1"/>
-            <Button Grid.Column="3" Grid.Row="1" Background="LightGreen" FontSize="16" Content="Afrekenen"/>
-            <Button Grid.Column="5" Grid.Row="1" Background="LightGreen" FontSize="16" Content="Volgende klant"/>
+            <TextBlock Text="Sluit af over: " Grid.Column="1" Name="tbSluitenOver"/>
+            <ProgressBar Grid.Column="1" Grid.Row="1" Name="pgrbSluiten" Value="60" Maximum="60"/>
+            <Button Grid.Column="3" Name="btAfrekenen" Grid.Row="1" Background="LightGreen" FontSize="16" Content="Afrekenen" Click="btAfrekenen_Click"/>
+            <Button Grid.Column="5" Name="btVolgendeKlant" Grid.Row="1" Background="LightGreen" FontSize="16" Content="Volgende klant" Click="btVolgendeKlant_Click"/>
         </Grid>
     </Grid>
 </Window>

@@ -1,18 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace De_Fluitende_Fietser_Dekstop
 {
@@ -25,6 +15,7 @@ namespace De_Fluitende_Fietser_Dekstop
         {
             InitializeComponent();
             ComboboxVul();
+            progressStart();
         }
         double[] prijsService = { 15, 10, 12.5, 20 };
         string[] ServiceList = { "Ophaalservice", "Regenpak", "Lunchpakket basis", "Lunchpakket uitgebreid" };
@@ -81,33 +72,210 @@ namespace De_Fluitende_Fietser_Dekstop
 
             }
         }
+        int dagen = 1;
+        double afrekenTotaal = 0;
         private void btToevoegen_Click(object sender, RoutedEventArgs e)
         {
-            //ListBoxItem bestelling = new ListBoxItem();
             TextBlock fiets = new TextBlock();
             TextBlock prijs = new TextBlock();
             TextBlock verzekering = new TextBlock();
             TextBlock service = new TextBlock();
-            fiets.Text = fietsList[cmbFietsen.SelectedIndex - 1];
-            prijs.Text = prijsfietsList[cmbFietsen.SelectedIndex - 1].ToString();
-            verzekering.Text = verzekeringList[cmbVerzekering.SelectedIndex - 1];
-            service.Text = ServiceList[cmbService.SelectedIndex - 1];
+            int bestelPrijs = 0;
+            try
+            {
+                
+                dagen = Convert.ToInt16(txtDagen.Text);
+                if (dagen >= 1 && cmbFietsen.SelectedIndex >= 1)
+                {
+                    bestelPrijs = (int)prijsfietsList[cmbFietsen.SelectedIndex - 1];
+                        // + (int)prijsService[cmbService.SelectedIndex - 1] + (int)prijsverzekeringlist[cmbVerzekering.SelectedIndex - 1]) * dagen).ToString("C", new System.Globalization.CultureInfo("nl-NL"));
+                    fiets.Text = fietsList[cmbFietsen.SelectedIndex - 1];
+                    if (cmbVerzekering.SelectedIndex >= 1)
+                    {
+                        verzekering.Text = verzekeringList[cmbVerzekering.SelectedIndex - 1];
+                        bestelPrijs += (int)prijsverzekeringlist[cmbVerzekering.SelectedIndex - 1];
+                    }
+                    else
+                    {
+                        verzekering.Text = "Geen verzekering";
+                    }
+                    if (cmbService.SelectedIndex >= 1)
+                    {
+                        service.Text = ServiceList[cmbService.SelectedIndex - 1];
+                        bestelPrijs += (int)prijsService[cmbService.SelectedIndex - 1];
+                    }
+                    else
+                    {
+                        service.Text = "Geen service";
+                    }
+                    bestelPrijs = bestelPrijs * dagen;
+                    prijs.Text = bestelPrijs.ToString("C", new System.Globalization.CultureInfo("nl-NL"));
+                }
+                else
+                {
+                    throw new Exception("werkt niet");
+                }
+                
+                
+            }
+            catch
+            {
+                MessageBox.Show("Er ging iets gloeiend mis... Probeer het opniew");
+                cmbFietsen.SelectedIndex = 0;
+                cmbService.SelectedIndex = 0;
+                cmbVerzekering.SelectedIndex = 0;
+                txtDagen.Text = "";
+                return;
+            }
+            //ListBoxItem bestelling = new ListBoxItem();
+            
+
             fiets.Padding = new Thickness(10);
             prijs.Padding = new Thickness(10);
             verzekering.Padding = new Thickness(10);
             service.Padding = new Thickness(10);
+
+            fiets.FontSize = 15;
+            prijs.FontSize = 15;
+            verzekering.FontSize = 15;
+            service.FontSize = 15;
+
+            double neededWidth = gdBestelling.ActualWidth * 0.25;
+            fiets.Width = neededWidth;
+            prijs.Width = neededWidth;
+            verzekering.Width = neededWidth;
+            service.Width = neededWidth;
+
+
             StackPanel bestelling = new StackPanel();
             bestelling.Orientation = Orientation.Horizontal;
             bestelling.Children.Add(fiets);
-            bestelling.Children.Add(prijs);
             bestelling.Children.Add(verzekering);
             bestelling.Children.Add(service);
-            
+            bestelling.Children.Add(prijs);
+
             //lbBestelling.Items.Add(fiets + prijs + verzekering + service);
-
+            try
+            {
+                afrekenTotaal = afrekenTotaal + bestelPrijs;
+                MessageBox.Show(afrekenTotaal.ToString());
+            }
+            catch
+            {
+                MessageBox.Show("Er ging iets gloeiend mis... Probeer het opniew");
+            }
             spBestellingen.Children.Add(bestelling);
+            btAfrekenen.Content =  "Afrekenen " + afrekenTotaal.ToString("C", new System.Globalization.CultureInfo("nl-NL"));
 
 
+        }
+        bool afgerekent = false;
+        private void btVolgendeKlant_Click(object sender, RoutedEventArgs e)
+        {
+            if (afgerekent == false)
+            {
+                MessageBoxResult result = MessageBox.Show("De klant heeft nog niet afgerekent. Weet u zeker dat u wilt anuleeren?", "Weet u het zeker", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
+                {
+                    spBestellingen.Children.Clear();
+                    cmbFietsen.SelectedIndex = 0;
+                    cmbService.SelectedIndex = 0;
+                    cmbVerzekering.SelectedIndex = 0;
+                    txtDagen.Text = "";
+                    btAfrekenen.Content = "Afrekenen";
+                    afrekenTotaal = 0;
+                    afgerekent = false;
+                }
+            }
+            else
+            {
+                spBestellingen.Children.Clear();
+                cmbFietsen.SelectedIndex = 0;
+                cmbService.SelectedIndex = 0;
+                cmbVerzekering.SelectedIndex = 0;
+                txtDagen.Text = "";
+                afrekenTotaal = 0;
+                btAfrekenen.Content = "Afrekenen";
+                afgerekent = false;
+            }
+            
+        }
+
+        private void btAfrekenen_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Afrekenen maar!");
+            afgerekent = true;
+            
+        }
+        DispatcherTimer progress = new DispatcherTimer();
+        private void progressStart()
+        {
+            DispatcherTimer progress = new DispatcherTimer();
+            progress.Interval = TimeSpan.FromSeconds(1);
+            progress.Tick += timer_Tick;
+            progress.Start();
+            sluitenIn = 60;
+        }
+        int sluitenIn = 60;
+        void timer_Tick(object sender, EventArgs e)
+        {
+            if(Win32.GetIdleTime() > 500)
+            {
+                sluitenIn--;
+                pgrbSluiten.Value = sluitenIn;
+                tbSluitenOver.Text = $"Sluit over: {sluitenIn} seconden";
+                
+
+            }
+            else
+            {
+                sluitenIn = 60;
+                pgrbSluiten.Value = sluitenIn;
+                tbSluitenOver.Text = $"Sluit over: {sluitenIn} seconden";
+            }
+            if(sluitenIn == 0)
+            {
+                this.Close();
+            }
+        }
+
+    }
+    internal struct LASTINPUTINFO
+    {
+        public uint cbSize;
+        public uint dwTime;
+    }
+
+    public class Win32
+    {
+        [DllImport("User32.dll")]
+        public static extern bool LockWorkStation();
+
+        [DllImport("User32.dll")]
+        private static extern bool GetLastInputInfo(ref LASTINPUTINFO plii);
+
+        [DllImport("Kernel32.dll")]
+        private static extern uint GetLastError();
+
+        public static uint GetIdleTime()
+        {
+            LASTINPUTINFO lastInPut = new LASTINPUTINFO();
+            lastInPut.cbSize = (uint)System.Runtime.InteropServices.Marshal.SizeOf(lastInPut);
+            GetLastInputInfo(ref lastInPut);
+
+            return ((uint)Environment.TickCount - lastInPut.dwTime);
+        }
+
+        public static long GetLastInputTime()
+        {
+            LASTINPUTINFO lastInPut = new LASTINPUTINFO();
+            lastInPut.cbSize = (uint)System.Runtime.InteropServices.Marshal.SizeOf(lastInPut);
+            if (!GetLastInputInfo(ref lastInPut))
+            {
+                throw new Exception(GetLastError().ToString());
+            }
+
+            return lastInPut.dwTime;
         }
     }
 }
