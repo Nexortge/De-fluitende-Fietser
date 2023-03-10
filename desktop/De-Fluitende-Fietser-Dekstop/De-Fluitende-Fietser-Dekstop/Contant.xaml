@@ -1,0 +1,112 @@
+﻿<Window x:Class="De_Fluitende_Fietser_Dekstop.Contant"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:De_Fluitende_Fietser_Dekstop"
+        mc:Ignorable="d"
+        Title="Contant" Height="600" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+            
+        </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" Grid.Row="0">
+                <Image Source="/Img/contantImg/1cent.png" Width="50" HorizontalAlignment="Left"/>
+                <TextBlock Text="1 cent" VerticalAlignment="Center" Width="75" TextAlignment="Center" FontSize="20"/>
+                <TextBlock Text="amount" VerticalAlignment="Center" Width="75" TextAlignment="Center" FontSize="14"/>
+                <TextBox Text="0" VerticalAlignment="Center" Width="50" TextAlignment="Center" FontSize="20" Name="tb1cent"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="1">
+                <Image Source="/Img/contantImg/2cent.png" Width="50" HorizontalAlignment="Left"/>
+                <TextBlock Text="2 cent" VerticalAlignment="Center" Width="75" TextAlignment="Center" FontSize="20"/>
+                <TextBlock Text="amount" VerticalAlignment="Center" Width="75" TextAlignment="Center" FontSize="14"/>
+                <TextBox Text="0" VerticalAlignment="Center" Width="50" TextAlignment="Center" FontSize="20" Name="tb2cent"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="2">
+                <Image Source="/Img/contantImg/5cent.png" Width="50" HorizontalAlignment="Left"/>
+                <TextBlock Text="5 cent" VerticalAlignment="Center" Width="75" TextAlignment="Center" FontSize="20"/>
+                <TextBlock Text="amount" VerticalAlignment="Center" Width="75" TextAlignment="Center" FontSize="14"/>
+                <TextBox Text="0" VerticalAlignment="Center" Width="50" TextAlignment="Center" FontSize="20" Name="tb5cent"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="3">
+                <Image Source="/Img/contantImg/20cent.png" Width="50" HorizontalAlignment="Left"/>
+                <TextBlock Text="20 cent" VerticalAlignment="Center" Width="75" TextAlignment="Center" FontSize="20"/>
+                <TextBlock Text="amount" VerticalAlignment="Center" Width="75" TextAlignment="Center" FontSize="14"/>
+                <TextBox Text="0" VerticalAlignment="Center" Width="50" TextAlignment="Center" FontSize="20" Name="tb20cent"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="4">
+                <Image Source="/Img/contantImg/50cent.png" Width="50" HorizontalAlignment="Left"/>
+                <TextBlock Text="50 cent" VerticalAlignment="Center" Width="75" TextAlignment="Center" FontSize="20"/>
+                <TextBlock Text="amount" VerticalAlignment="Center" Width="75" TextAlignment="Center" FontSize="14"/>
+                <TextBox Text="0" VerticalAlignment="Center" Width="50" TextAlignment="Center" FontSize="20" Name="tb50cent"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="5">
+                <Image Source="/Img/contantImg/1euro.png" Width="50" HorizontalAlignment="Left"/>
+                <TextBlock Text="1 euro" VerticalAlignment="Center" Width="75" TextAlignment="Center" FontSize="20"/>
+                <TextBlock Text="amount" VerticalAlignment="Center" Width="75" TextAlignment="Center" FontSize="14"/>
+                <TextBox Text="0" VerticalAlignment="Center" Width="50" TextAlignment="Center" FontSize="20" Name="tb1euro"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="6">
+                <Image Source="/Img/contantImg/2euro.png" Width="50" HorizontalAlignment="Left"/>
+                <TextBlock Text="2 euro" VerticalAlignment="Center" Width="75" TextAlignment="Center" FontSize="20"/>
+                <TextBlock Text="amount" VerticalAlignment="Center" Width="75" TextAlignment="Center" FontSize="14"/>
+                <TextBox Text="0" VerticalAlignment="Center" Width="50" TextAlignment="Center" FontSize="20" Name="tb2euro"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="7">
+                <Image Source="/Img/contantImg/5euro.png" Width="50" HorizontalAlignment="Left"/>
+                <TextBlock Text="5 euro" VerticalAlignment="Center" Width="75" TextAlignment="Center" FontSize="20"/>
+                <TextBlock Text="amount" VerticalAlignment="Center" Width="75" TextAlignment="Center" FontSize="14"/>
+                <TextBox Text="0" VerticalAlignment="Center" Width="50" TextAlignment="Center" FontSize="20" Name="tb5euro"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="8">
+                <Image Source="/Img/contantImg/10euro.png" Width="50" HorizontalAlignment="Left"/>
+                <TextBlock Text="10 euro" VerticalAlignment="Center" Width="75" TextAlignment="Center" FontSize="20"/>
+                <TextBlock Text="amount" VerticalAlignment="Center" Width="75" TextAlignment="Center" FontSize="14"/>
+                <TextBox Text="0" VerticalAlignment="Center" Width="50" TextAlignment="Center" FontSize="20" Name="tb10euro"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="9">
+                <Image Source="/Img/contantImg/20euro.jpg" Width="50" HorizontalAlignment="Left"/>
+                <TextBlock Text="20 euro" VerticalAlignment="Center" Width="75" TextAlignment="Center" FontSize="20"/>
+                <TextBlock Text="amount" VerticalAlignment="Center" Width="75" TextAlignment="Center" FontSize="14"/>
+                <TextBox Text="0" VerticalAlignment="Center" Width="50" TextAlignment="Center" FontSize="20" Name="tb20euro"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="10">
+                <Image Source="/Img/contantImg/50euro.png" Width="50" HorizontalAlignment="Left"/>
+                <TextBlock Text="50 euro" VerticalAlignment="Center" Width="75" TextAlignment="Center" FontSize="20"/>
+                <TextBlock Text="amount" VerticalAlignment="Center" Width="75" TextAlignment="Center" FontSize="14"/>
+                <TextBox Text="0" VerticalAlignment="Center" Width="50" TextAlignment="Center" FontSize="20" Name="tb50euro"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="11">
+                <Image Source="/Img/contantImg/100euro.png" Width="50" HorizontalAlignment="Left"/>
+                <TextBlock Text="100 euro" VerticalAlignment="Center" Width="75" TextAlignment="Center" FontSize="20"/>
+                <TextBlock Text="amount" VerticalAlignment="Center" Width="75" TextAlignment="Center" FontSize="14"/>
+                <TextBox Text="0" VerticalAlignment="Center" Width="50" TextAlignment="Center" FontSize="20"  Name="tb100euro"/>
+            </StackPanel>
+
+
+        </Grid>
+        <Grid Grid.Column="1">
+            <TextBlock Text="Totaal nodig" VerticalAlignment="Center" TextAlignment="Center" FontSize="20" Margin="0, 0, 0, 50"/>
+            <TextBox Text="0" VerticalAlignment="Center" Width="150" TextAlignment="Center" FontSize="20" Margin="0,0,0,-50" Name="tbNodig"/>
+            <TextBlock Text="Totaal betaald" VerticalAlignment="Center" TextAlignment="Center" FontSize="20" Margin="0, 0, 0, -150"/>
+            <TextBox Text="0" VerticalAlignment="Center" Width="151" TextAlignment="Center" FontSize="20" Margin="0,0,0,-250" Name="tbBetaald"/>
+        </Grid>
+    </Grid>
+</Window>

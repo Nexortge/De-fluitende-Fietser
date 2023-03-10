@@ -16,6 +16,8 @@ namespace De_Fluitende_Fietser_Dekstop
             InitializeComponent();
             ComboboxVul();
             progressStart();
+            
+
         }
         double[] prijsService = { 15, 10, 12.5, 20 };
         string[] ServiceList = { "Ophaalservice", "Regenpak", "Lunchpakket basis", "Lunchpakket uitgebreid" };
@@ -110,6 +112,8 @@ namespace De_Fluitende_Fietser_Dekstop
                     }
                     bestelPrijs = bestelPrijs * dagen;
                     prijs.Text = bestelPrijs.ToString("C", new System.Globalization.CultureInfo("nl-NL"));
+                    btAfrekenen.IsEnabled = true;
+
                 }
                 else
                 {
@@ -120,7 +124,7 @@ namespace De_Fluitende_Fietser_Dekstop
             }
             catch
             {
-                MessageBox.Show("Er ging iets gloeiend mis... Probeer het opniew");
+                MessageBox.Show("Selecteer een of meerdere fiets(en) en een of meerdere dag(en).");
                 cmbFietsen.SelectedIndex = 0;
                 cmbService.SelectedIndex = 0;
                 cmbVerzekering.SelectedIndex = 0;
@@ -158,11 +162,10 @@ namespace De_Fluitende_Fietser_Dekstop
             try
             {
                 afrekenTotaal = afrekenTotaal + bestelPrijs;
-                MessageBox.Show(afrekenTotaal.ToString());
             }
             catch
             {
-                MessageBox.Show("Er ging iets gloeiend mis... Probeer het opniew");
+                MessageBox.Show("Er is iets misgegaan het uitrekenen van de prijs. probeer het opniew.");
             }
             spBestellingen.Children.Add(bestelling);
             btAfrekenen.Content =  "Afrekenen " + afrekenTotaal.ToString("C", new System.Globalization.CultureInfo("nl-NL"));
@@ -174,7 +177,7 @@ namespace De_Fluitende_Fietser_Dekstop
         {
             if (afgerekent == false)
             {
-                MessageBoxResult result = MessageBox.Show("De klant heeft nog niet afgerekent. Weet u zeker dat u wilt anuleeren?", "Weet u het zeker", MessageBoxButton.YesNo);
+                MessageBoxResult result = MessageBox.Show("U heeft nog niet afgerekent. Weet u zeker dat u wilt anuleeren?", "Weet u het zeker", MessageBoxButton.YesNo);
                 if (result == MessageBoxResult.Yes)
                 {
                     spBestellingen.Children.Clear();
@@ -203,9 +206,11 @@ namespace De_Fluitende_Fietser_Dekstop
 
         private void btAfrekenen_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Afrekenen maar!");
-            afgerekent = true;
             
+            btAfrekenen.Content = "Afrekenen";
+            afgerekent = true;
+            Contant win2 = new Contant(afrekenTotaal);
+            win2.Show();
         }
         DispatcherTimer progress = new DispatcherTimer();
         private void progressStart()

@@ -35,7 +35,7 @@
                     <TextBlock Text="Fietsen" FontSize="20"/>
                 </ComboBoxItem>
             </ComboBox>
-            
+
             <ComboBox Grid.Column="3" Grid.Row="0"  SelectedIndex="0" Margin="0,5,0,0" Name="cmbVerzekering">
                 <ComboBoxItem>
                     <TextBlock Text="Verzekering" FontSize="20"/>
@@ -45,8 +45,8 @@
                 <ComboBoxItem>
                     <TextBlock Text="Service" FontSize="20"/>
                 </ComboBoxItem>
-                
-                
+
+
 
 
 
@@ -61,7 +61,7 @@
         <Grid Grid.Row="1" Name="gdBestelling">
             <Image Source="/Img/fietser-nb.png" Opacity="0.2" Panel.ZIndex="-1"/>
             <StackPanel Orientation="Vertical" Name="spBestellingen">
-                
+
             </StackPanel>
 
         </Grid>
@@ -83,7 +83,7 @@
             </Grid.RowDefinitions>
             <TextBlock Text="Sluit af over: " Grid.Column="1" Name="tbSluitenOver"/>
             <ProgressBar Grid.Column="1" Grid.Row="1" Name="pgrbSluiten" Value="60" Maximum="60"/>
-            <Button Grid.Column="3" Name="btAfrekenen" Grid.Row="1" Background="LightGreen" FontSize="16" Content="Afrekenen" Click="btAfrekenen_Click"/>
+            <Button Grid.Column="3" Name="btAfrekenen" Grid.Row="1" Background="LightGreen" FontSize="16" Content="Afrekenen" Click="btAfrekenen_Click" IsEnabled="False"/>
             <Button Grid.Column="5" Name="btVolgendeKlant" Grid.Row="1" Background="LightGreen" FontSize="16" Content="Volgende klant" Click="btVolgendeKlant_Click"/>
         </Grid>
     </Grid>

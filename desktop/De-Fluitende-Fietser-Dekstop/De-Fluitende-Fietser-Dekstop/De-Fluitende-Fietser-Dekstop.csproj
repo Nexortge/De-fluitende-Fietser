@@ -70,6 +70,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Contant.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -77,6 +81,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Contant.xaml.cs">
+      <DependentUpon>Contant.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -112,6 +119,42 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Img\fietser-nb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\contantImg\1cent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\contantImg\2cent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\contantImg\5cent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\contantImg\20cent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\contantImg\50cent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\contantImg\1euro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\contantImg\2euro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\contantImg\5euro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\contantImg\10euro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\contantImg\20euro.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\contantImg\50euro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\contantImg\100euro.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
