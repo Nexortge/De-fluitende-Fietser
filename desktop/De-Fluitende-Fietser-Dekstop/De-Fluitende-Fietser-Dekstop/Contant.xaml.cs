@@ -45,7 +45,21 @@ namespace De_Fluitende_Fietser_Dekstop
         {
             try
             {
-                double[] listAlltb = {Convert.ToInt32(tb100euro.Text) * 100, Convert.ToInt32(tb50euro.Text) * 50, Convert.ToInt32(tb20euro.Text) * 20, Convert.ToInt32(tb10euro.Text) * 10, Convert.ToInt32(tb5euro.Text) * 5, Convert.ToInt32(tb2euro.Text) * 2, Convert.ToInt32(tb1euro.Text) * 1, Convert.ToInt32(tb50cent.Text) * 0.5, Convert.ToInt32(tb20cent.Text) * 0.2, Convert.ToInt32(tb5cent.Text) * 0.05, Convert.ToInt32(tb2cent.Text) * 0.02, Convert.ToInt32(tb1cent.Text) * 0.01 };
+                double[] listAlltb = 
+                {
+                    Convert.ToInt32(tb100euro.Text) * 100,
+                    Convert.ToInt32(tb50euro.Text) * 50,
+                    Convert.ToInt32(tb20euro.Text) * 20, 
+                    Convert.ToInt32(tb10euro.Text) * 10,
+                    Convert.ToInt32(tb5euro.Text) * 5,
+                    Convert.ToInt32(tb2euro.Text) * 2,
+                    Convert.ToInt32(tb1euro.Text) * 1,
+                    Convert.ToInt32(tb50cent.Text) * 0.5,
+                    Convert.ToInt32(tb20cent.Text) * 0.2,
+                    Convert.ToInt32(tb5cent.Text) * 0.05,
+                    Convert.ToInt32(tb2cent.Text) * 0.02,
+                    Convert.ToInt32(tb1cent.Text) * 0.01 
+                };
                 double sum = 0;
                 foreach(double bill in listAlltb)
                 {
@@ -59,6 +73,7 @@ namespace De_Fluitende_Fietser_Dekstop
                 else
                 {
                     tbBetaald.Foreground = Brushes.LightGreen;
+                    tbOver.Text = (sum - bedragNodig).ToString("C", new System.Globalization.CultureInfo("nl-NL"));
                 }
             }
             catch
@@ -66,6 +81,11 @@ namespace De_Fluitende_Fietser_Dekstop
                 return;
             }
 
+        }
+
+        private void btSluitaf_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

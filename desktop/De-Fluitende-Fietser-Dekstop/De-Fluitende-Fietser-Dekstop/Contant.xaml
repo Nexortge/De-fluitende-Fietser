@@ -103,10 +103,13 @@
 
         </Grid>
         <Grid Grid.Column="1">
-            <TextBlock Text="Totaal nodig" VerticalAlignment="Center" TextAlignment="Center" FontSize="20" Margin="0, 0, 0, 50"/>
-            <TextBox Text="0" VerticalAlignment="Center" Width="150" TextAlignment="Center" FontSize="20" Margin="0,0,0,-50" Name="tbNodig"/>
-            <TextBlock Text="Totaal betaald" VerticalAlignment="Center" TextAlignment="Center" FontSize="20" Margin="0, 0, 0, -150"/>
-            <TextBox Text="0" VerticalAlignment="Center" Width="151" TextAlignment="Center" FontSize="20" Margin="0,0,0,-250" Name="tbBetaald"/>
+            <TextBlock Text="Totaal nodig" VerticalAlignment="Center" TextAlignment="Center" FontSize="20" Margin="0, 0, 0, 100"/>
+            <TextBox Text="0" VerticalAlignment="Center" Width="150" TextAlignment="Center" FontSize="20" Margin="0,0,0,50" Name="tbNodig"/>
+            <TextBlock Text="Totaal betaald" VerticalAlignment="Center" TextAlignment="Center" FontSize="20" Margin="0, 0, 0, 0"/>
+            <TextBox Text="0" VerticalAlignment="Center" Width="151" TextAlignment="Center" FontSize="20" Margin="0,0,0,-50" Name="tbBetaald"/>
+            <TextBlock Text="Totaal wisselgeld" VerticalAlignment="Center" TextAlignment="Center" FontSize="20" Margin="0, 0, 0, -100"/>
+            <TextBox Text="0" VerticalAlignment="Center" Width="151" TextAlignment="Center" FontSize="20" Margin="0,0,0,-150" Name="tbOver"/>
+            <Button Height="30" VerticalAlignment="Bottom" Margin="10, 0, 10, 10" Content="Sluit af" FontSize="20" Name="btSluitaf" Click="btSluitaf_Click"/>
         </Grid>
     </Grid>
 </Window>

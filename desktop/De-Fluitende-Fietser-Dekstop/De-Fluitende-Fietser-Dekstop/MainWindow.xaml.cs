@@ -2,6 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Threading;
 
 namespace De_Fluitende_Fietser_Dekstop
@@ -111,6 +112,7 @@ namespace De_Fluitende_Fietser_Dekstop
                         service.Text = "Geen service";
                     }
                     bestelPrijs = bestelPrijs * dagen;
+                    
                     prijs.Text = bestelPrijs.ToString("C", new System.Globalization.CultureInfo("nl-NL"));
                     btAfrekenen.IsEnabled = true;
 
@@ -144,11 +146,21 @@ namespace De_Fluitende_Fietser_Dekstop
             verzekering.FontSize = 15;
             service.FontSize = 15;
 
-            double neededWidth = gdBestelling.ActualWidth * 0.25;
+            double neededWidth = gdBestelling.ActualWidth * 0.20;
             fiets.Width = neededWidth;
             prijs.Width = neededWidth;
             verzekering.Width = neededWidth;
             service.Width = neededWidth;
+            
+            Button remove = new Button();
+            
+            remove.Width = neededWidth;
+            remove.Content = "X";
+            remove.FontSize = 20;
+            remove.BorderBrush = Brushes.Transparent;
+            remove.Foreground = Brushes.Red;
+            remove.Background = Brushes.Transparent;
+            
 
 
             StackPanel bestelling = new StackPanel();
@@ -157,6 +169,11 @@ namespace De_Fluitende_Fietser_Dekstop
             bestelling.Children.Add(verzekering);
             bestelling.Children.Add(service);
             bestelling.Children.Add(prijs);
+            bestelling.Children.Add(remove);
+            remove.Click += Remove_Click;
+
+
+
 
             //lbBestelling.Items.Add(fiets + prijs + verzekering + service);
             try
@@ -170,11 +187,41 @@ namespace De_Fluitende_Fietser_Dekstop
             spBestellingen.Children.Add(bestelling);
             btAfrekenen.Content =  "Afrekenen " + afrekenTotaal.ToString("C", new System.Globalization.CultureInfo("nl-NL"));
 
-
+            
         }
         bool afgerekent = false;
+        private void Remove_Click(object sender, RoutedEventArgs e)
+        {
+            //Pak de stackpanel die verwijderd wordt
+            Button btn = sender as Button;
+            StackPanel sp = btn.Parent as StackPanel;
+            TextBlock tb = sp.Children[3] as TextBlock;
+            
+            //Pakt de 2 getallen die van elkaar af worden gehaald
+            string a = tb.Text.ToString();
+            string[] subs = a.Split(' ');
+            double prijs = Convert.ToDouble(subs[1]);
+            a = btAfrekenen.Content.ToString();
+            string[] subs2 = a.Split(' ');
+            double prijsRemove = Convert.ToDouble(subs2[2]);
+            afrekenTotaal = prijsRemove - prijs;
+            //haalt de prijs van het totaal af en als het minder dan nul is word de hele tekst verwijderd en verwijderd ook de hele stackpanel en 
+            if (afrekenTotaal != 0) 
+            {
+                btAfrekenen.Content = "Afrekenen " + ((afrekenTotaal).ToString("C", new System.Globalization.CultureInfo("nl-NL")));
+            }
+            else
+            {
+                btAfrekenen.Content = "Afrekenen";
+            }
+            
+            StackPanel lb = sp.Parent as StackPanel;
+            lb.Children.Remove(sp);
+
+        }
         private void btVolgendeKlant_Click(object sender, RoutedEventArgs e)
         {
+            
             if (afgerekent == false)
             {
                 MessageBoxResult result = MessageBox.Show("U heeft nog niet afgerekent. Weet u zeker dat u wilt anuleeren?", "Weet u het zeker", MessageBoxButton.YesNo);
@@ -224,26 +271,26 @@ namespace De_Fluitende_Fietser_Dekstop
         int sluitenIn = 60;
         void timer_Tick(object sender, EventArgs e)
         {
-            if(Win32.GetIdleTime() > 500)
-            {
+            
+            
                 sluitenIn--;
                 pgrbSluiten.Value = sluitenIn;
                 tbSluitenOver.Text = $"Sluit over: {sluitenIn} seconden";
                 
 
-            }
-            else
-            {
-                sluitenIn = 60;
-                pgrbSluiten.Value = sluitenIn;
-                tbSluitenOver.Text = $"Sluit over: {sluitenIn} seconden";
-            }
+            
             if(sluitenIn == 0)
             {
                 this.Close();
+                Contant win2 = new Contant(afrekenTotaal);
+                win2.Close();
             }
         }
 
+        private void Grid_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            sluitenIn = 61;
+        }
     }
     internal struct LASTINPUTINFO
     {
