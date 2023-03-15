@@ -39,8 +39,7 @@ namespace De_Fluitende_Fietser_Dekstop
             timer.Start();
             
         }
-        
-
+        double sum = 0;
         private void timer_Tick(object sender, EventArgs e)
         {
             try
@@ -60,8 +59,8 @@ namespace De_Fluitende_Fietser_Dekstop
                     Convert.ToInt32(tb2cent.Text) * 0.02,
                     Convert.ToInt32(tb1cent.Text) * 0.01 
                 };
-                double sum = 0;
-                foreach(double bill in listAlltb)
+                sum = 0;
+                foreach (double bill in listAlltb)
                 {
                     sum += bill;
                 }
@@ -80,12 +79,38 @@ namespace De_Fluitende_Fietser_Dekstop
             {
                 return;
             }
-
+            
         }
+       
+
 
         private void btSluitaf_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void btBerekenBriefjes_Click(object sender, RoutedEventArgs e)
+        {
+            spMuntenTerug.Children.Clear();
+            double bedragTerug = sum - bedragNodig;
+
+            double[] listAllBriefjes = new double[] { 100, 50, 20, 10, 5, 2, 1, 0.5, 0.2, 0.05, 0.02, 0.01 };
+            int[] listBriefjesHoeveelheid = new int[listAllBriefjes.Length];
+            for (int i = 0; i < listAllBriefjes.Length; i++)
+            {
+                listBriefjesHoeveelheid[i] = Convert.ToInt32(Math.Floor(bedragTerug / listAllBriefjes[i]));
+                bedragTerug -= listBriefjesHoeveelheid[i] * listAllBriefjes[i];
+            }
+            for (int i = 0; i < listAllBriefjes.Length; i++)
+            {
+                if (listBriefjesHoeveelheid[i] > 0)
+                {
+                    TextBlock tb = new TextBlock();
+                    tb.Text = listBriefjesHoeveelheid[i] + " x " + listAllBriefjes[i].ToString("C", new System.Globalization.CultureInfo("nl-NL"));
+                    tb.Margin = new Thickness(0, 0, 0, 5);
+                    spMuntenTerug.Children.Add(tb);
+                }
+            }
         }
     }
 }

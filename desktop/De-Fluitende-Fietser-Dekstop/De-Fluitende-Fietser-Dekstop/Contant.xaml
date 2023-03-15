@@ -10,7 +10,8 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="1*"/>
-            
+            <ColumnDefinition Width="1*"/>
+
         </Grid.ColumnDefinitions>
         <Grid>
             <Grid.RowDefinitions>
@@ -109,7 +110,16 @@
             <TextBox Text="0" VerticalAlignment="Center" Width="151" TextAlignment="Center" FontSize="20" Margin="0,0,0,-50" Name="tbBetaald"/>
             <TextBlock Text="Totaal wisselgeld" VerticalAlignment="Center" TextAlignment="Center" FontSize="20" Margin="0, 0, 0, -100"/>
             <TextBox Text="0" VerticalAlignment="Center" Width="151" TextAlignment="Center" FontSize="20" Margin="0,0,0,-150" Name="tbOver"/>
+            <Button Height="30" VerticalAlignment="Bottom" Margin="10, 0, 10, 10" Content="Bereken wisselgeld" FontSize="20" Name="btBerekenBriefjes" Click="btBerekenBriefjes_Click"/>
+
+
+
+        </Grid>
+        <Grid Grid.Column="2">
             <Button Height="30" VerticalAlignment="Bottom" Margin="10, 0, 10, 10" Content="Sluit af" FontSize="20" Name="btSluitaf" Click="btSluitaf_Click"/>
+            <StackPanel Orientation="Vertical" Name="spMuntenTerug" MaxHeight="500"/>
+            <TextBlock Text="Briefjes terug:" TextWrapping="Wrap" FontSize="20"/>
+
         </Grid>
     </Grid>
 </Window>

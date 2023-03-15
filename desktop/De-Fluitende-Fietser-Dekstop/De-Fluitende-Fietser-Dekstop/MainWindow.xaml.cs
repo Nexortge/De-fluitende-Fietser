@@ -281,9 +281,10 @@ namespace De_Fluitende_Fietser_Dekstop
             
             if(sluitenIn == 0)
             {
-                this.Close();
-                Contant win2 = new Contant(afrekenTotaal);
-                win2.Close();
+                /*Contant win = new Contant(afrekenTotaal);
+                win.Close();
+                this.Close();*/
+                System.Environment.Exit(0);
             }
         }
 
@@ -298,36 +299,4 @@ namespace De_Fluitende_Fietser_Dekstop
         public uint dwTime;
     }
 
-    public class Win32
-    {
-        [DllImport("User32.dll")]
-        public static extern bool LockWorkStation();
-
-        [DllImport("User32.dll")]
-        private static extern bool GetLastInputInfo(ref LASTINPUTINFO plii);
-
-        [DllImport("Kernel32.dll")]
-        private static extern uint GetLastError();
-
-        public static uint GetIdleTime()
-        {
-            LASTINPUTINFO lastInPut = new LASTINPUTINFO();
-            lastInPut.cbSize = (uint)System.Runtime.InteropServices.Marshal.SizeOf(lastInPut);
-            GetLastInputInfo(ref lastInPut);
-
-            return ((uint)Environment.TickCount - lastInPut.dwTime);
-        }
-
-        public static long GetLastInputTime()
-        {
-            LASTINPUTINFO lastInPut = new LASTINPUTINFO();
-            lastInPut.cbSize = (uint)System.Runtime.InteropServices.Marshal.SizeOf(lastInPut);
-            if (!GetLastInputInfo(ref lastInPut))
-            {
-                throw new Exception(GetLastError().ToString());
-            }
-
-            return lastInPut.dwTime;
-        }
-    }
 }
